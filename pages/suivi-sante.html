@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suivi Santé | Santé Interactive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#4F46E5', 
+                        'secondary': '#10B981', 
+                        'bg-light': '#F9FAFB', 
+                        'bg-dark': '#1F2937', 
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-bg-light dark:bg-bg-dark text-gray-800 dark:text-gray-200 transition-colors duration-500 min-h-screen flex flex-col font-sans">
+
+    <header class="bg-white dark:bg-gray-800 shadow-lg sticky top-0 z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="../index.html" class="text-3xl font-extrabold text-primary hover:text-secondary transition-colors">MeDicare+</a>
+            
+            <nav class="hidden md:flex space-x-6 text-lg font-medium">
+                <a href="../index.html" class="hover:text-primary transition-colors">Accueil</a>
+                <a href="medecins.html" class="hover:text-primary transition-colors">Médecins</a>
+                <a href="rendez-vous.html" class="hover:text-primary transition-colors">Rendez-vous</a>
+                <a href="suivi-sante.html" class="hover:text-primary transition-colors">Suivi Santé</a>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                
+                <label for="theme-toggle" class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" id="theme-toggle" class="sr-only peer">
+                    <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-2 peer-focus:ring-primary dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+                    <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 hidden sm:inline">Nuit</span>
+                </label>
+                
+                <button id="burger-menu-btn" class="p-2 md:hidden rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        
+        <nav id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-inner">
+            <a href="../index.html" class="block py-3 px-4 text-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">Accueil</a>
+            <a href="medecins.html" class="block py-3 px-4 text-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">Médecins</a>
+            <a href="rendez-vous.html" class="block py-3 px-4 text-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">Rendez-vous</a>
+            <a href="suivi-sante.html" class="block py-3 px-4 text-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">Suivi Santé</a>
+        </nav>
+    </header>
+    <main class="flex-grow max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+        <h2 class="text-4xl font-bold mb-10 text-gray-900 dark:text-white border-b-2 border-primary/20 pb-3">Mon Suivi de Santé Quotidien 📈</h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+            <div id="poids-summary" class="summary-card bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center border-b-4 border-yellow-500">
+                <p class="text-sm text-gray-500 dark:text-gray-400 font-medium">Poids Moyen</p>
+                <p class="text-4xl font-extrabold text-gray-900 dark:text-white mt-1" id="avg-poids">-- kg</p>
+            </div>
+            <div id="tension-summary" class="summary-card bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center border-b-4 border-blue-500">
+                <p class="text-sm text-gray-500 dark:text-gray-400 font-medium">Tension (Dernière)</p>
+                <p class="text-4xl font-extrabold text-gray-900 dark:text-white mt-1" id="last-tension">--/--</p>
+            </div>
+            <div id="global-summary" class="summary-card bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center border-b-4">
+                <p class="text-sm text-gray-500 dark:text-gray-400 font-medium">Statut de Santé</p>
+                <p class="text-4xl font-extrabold mt-1" id="global-status" data-status="neutral">Chargement...</p>
+            </div>
+        </div>
+        
+        <form id="health-form" class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-2xl mb-12">
+            <h3 class="text-2xl font-bold mb-6 text-primary dark:text-secondary">Ajouter une Nouvelle Mesure</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <div>
+                    <label for="measure-type" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Type de Mesure</label>
+                    <select id="measure-type" name="type" required
+                            class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:ring-secondary focus:border-secondary">
+                        <option value="poids">Poids (kg)</option>
+                        <option value="tension">Tension (syst/diast)</option>
+                        <option value="glycemie">Glycémie (mg/dL)</option>
+                    </select>
+                </div>
+                <div id="value-field-1">
+                    <label for="measure-value" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Valeur Principale</label>
+                    <input type="number" id="measure-value" name="value" step="0.1" required
+                           class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:ring-secondary focus:border-secondary">
+                </div>
+                <div id="value-field-2" class="hidden">
+                    <label for="measure-value-2" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Valeur Secondaire (Diastolique)</label>
+                    <input type="number" id="measure-value-2" name="value2" step="1"
+                           class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white focus:ring-secondary focus:border-secondary">
+                </div>
+            </div>
+
+            <button type="submit" class="w-full py-3 px-4 rounded-xl shadow-lg text-lg font-semibold text-white bg-primary hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-[1.01]">
+                ➕ Enregistrer la Mesure
+            </button>
+        </form>
+
+        
+        <h3 class="text-3xl font-bold mb-5 text-gray-900 dark:text-white">Historique Détaillé</h3>
+        <ul id="measures-list" class="space-y-4">
+            <p class="text-gray-500 dark:text-gray-400" id="no-measures">Aucune mesure n'est encore enregistrée.</p>
+            </ul>
+
+    </main>
+
+    <footer class="mt-auto py-8 text-center text-sm text-gray-500 dark:text-gray-400 border-t dark:border-gray-700 bg-white dark:bg-gray-800">
+        Medicare+ © 2025.
+    </footer>
+
+    <script src="../scripts/home.js"></script>
+    <script src="../scripts/suivi.js"></script>
+</body>
+</html>
