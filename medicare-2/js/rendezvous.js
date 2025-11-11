@@ -1,24 +1,17 @@
 let userform = document.querySelector("#userForm");
 let searchBar = document.getElementById("searchar");
 let list = document.querySelector("#table-body");
-let add = document.getElementById("add");
-// let loadedData = JSON.parse(localStorage.getItem("healthAppointments"));
+let add = document.getElementById("add"); 
 
-// let mydata = [
-//   {
-//     id: "1762779814695",
-//     name: "karbitou",
-//     email: "mehdikarbitou@gmail.com",
-//     date: "2003-02-22T02:20",
-//     doctor: "Dr. Lamy Dupont (Cardiologie)",
-//     status: true,
-//   },
-// ];
-let savedData = JSON.parse(localStorage.getItem("healthAppointments"));
+ let savedData = JSON.parse(localStorage.getItem("healthAppointments")) || [];
+
 console.log("savedData", savedData);
 
 function allRdvData() {
   list.innerHTML = "";
+   savedData = JSON.parse(localStorage.getItem("healthAppointments")) || [];
+//    console.log(savedData)
+
   savedData.forEach((client) => {
     list.className = "text-gray-700 text-sm font-light";
     let info = document.createElement("tr");
@@ -122,8 +115,7 @@ function allRdvData() {
   });
 }
 
-calculate();
-allRdvData();
+
 
 function calculate() {
   let length = savedData.length;
@@ -137,3 +129,5 @@ function filtere() {
     let find = client.doctor.includes(searchText);
   });
 }
+calculate();
+allRdvData();
