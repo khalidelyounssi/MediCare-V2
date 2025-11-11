@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCare Admin - Médecins</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-100 font-sans antialiased">
+    <div class="flex min-h-screen">
+        <aside class="w-64 bg-blue-700 text-white p-6 shadow-xl flex flex-col justify-between">
+            <div>
+                <div class="text-2xl font-bold flex items-center justify-center gap-2 mb-8 border-b border-blue-600 pb-4">
+                    <i class="fas fa-medkit text-3xl text-white"></i>
+                    <span>MediCare Admin</span>
+                </div>
+                <nav class="space-y-2">
+                    <a href="dashboard.html" class="flex items-center p-3 rounded-lg text-blue-100 hover:bg-blue-600 transition duration-200">
+                        <i class="fas fa-home mr-3"></i>
+                        Accueil
+                    </a>
+                    <a href="medecins.html" class="flex items-center p-3 rounded-lg bg-blue-800 text-white font-semibold transition duration-200">
+                        <i class="fas fa-user-md mr-3"></i>
+                        Médecins
+                    </a>
+                    <a href="disponibilites.html" class="flex items-center p-3 rounded-lg text-blue-100 hover:bg-blue-600 transition duration-200">
+                        <i class="fas fa-clock mr-3"></i>
+                        Disponibilité
+                    </a>
+                    <a href="rendezvous.html" class="flex items-center p-3 rounded-lg text-blue-100 hover:bg-blue-600 transition duration-200">
+                        <i class="fas fa-calendar-check mr-3"></i>
+                        Rendez-vous
+                    </a>
+                    <a href="specialites.html" class="flex items-center p-3 rounded-lg text-blue-100 hover:bg-blue-600 transition duration-200">
+                        <i class="fas fa-tag mr-3"></i>
+                        Spécialité
+                    </a>
+                </nav>
+            </div>
+            <div class="flex items-center p-4 border-t border-blue-600 mt-4">
+                <img src="../assets/doc-1.png" alt="Admin Avatar" class="w-10 h-10 rounded-full object-cover border-2 border-white">
+                <span class="ml-3 text-sm font-medium">Dr. Sofia Rahman</span>
+            </div>
+        </aside>
+
+        <main class="flex-grow p-8">
+            <header class="flex justify-between items-center pb-4 mb-6 border-b border-gray-300">
+                <h1 class="text-3xl font-semibold text-gray-800">Gestion des Médecins</h1>
+                <div class="flex items-center space-x-4">
+                    <i class="fas fa-bell text-xl text-gray-500 hover:text-blue-600 cursor-pointer"></i>
+                    <i class="fas fa-cog text-xl text-gray-500 hover:text-blue-600 cursor-pointer"></i>
+                    <img src="../assets/doc-1.png" alt="Admin Avatar" class="w-9 h-9 rounded-full object-cover cursor-pointer">
+                </div>
+            </header>
+
+            <section class="bg-white p-6 rounded-xl shadow-lg mb-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-semibold text-gray-800">Liste des Médecins</h2>
+                    
+                    <button class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition duration-200 flex items-center">
+                        <i class="fas fa-plus mr-2"></i> Ajouter un Médecin
+                    </button>
+                    
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white">
+                        <thead>
+                            <tr class="bg-gray-100 text-left text-gray-600 uppercase text-sm leading-normal">
+                                <th class="py-3 px-6">Nom</th>
+                                <th class="py-3 px-6">Spécialité</th>
+                                <th class="py-3 px-6">Contact</th>
+                                <th class="py-3 px-6">Statut</th>
+                                <th class="py-3 px-6">Rendez-vous</th>
+                                <th class="py-3 px-6 text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-700 text-sm font-light">
+                            </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/medecins.js"></script>
+
+</body>
+</html>
