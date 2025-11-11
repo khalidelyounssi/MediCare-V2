@@ -1,12 +1,15 @@
-const DOCTORS = [
-    { id: 1, name: "Dr. Lamy Dupont", specialty: "Cardiologie", available: true, image: "../images/doc-1.png" },
-    { id: 2, name: "Dr. Alice Dubois", specialty: "Dermatologie", available: false, image: "../images/doc-2.png" },
-    { id: 3, name: "Prof. Marc Leroux", specialty: "Généraliste", available: true, image: "../images/doc-3.png" },
-    { id: 4, name: "Dr. Sophie Moreau", specialty: "Pédiatrie", available: true, image: "../images/doc-4.png" },
-    { id: 5, name: "Dr. Julien Petit", specialty: "Ophtalmologie", available: true, image: "../images/doc-5.png" },
-    { id: 6, name: "Dr. Elena Rossi", specialty: "Cardiologie", available: true, image: "../images/doc-6.png" },
-    { id: 7, name: "Dr. Ben Ali", specialty: "Pédiatrie", available: false, image: "../images/doc-7.png" },
-];
+const DOCTORS=JSON.parse(localStorage.getItem("medicareDoctors"));
+
+//  const data = localStorage.getItem("medicareDoctors");
+//     if (data) {
+//      DOCTORS = JSON.parse(localStorage.getItem("medicareDoctors"));
+      console.log(DOCTORS)
+    
+
+
+
+    
+
 
 const FAVORITES_KEY = 'doctorFavorites';
 const doctorsListContainer = document.getElementById('doctors-list');

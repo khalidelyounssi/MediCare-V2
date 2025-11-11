@@ -1,12 +1,10 @@
-const DOCTOR_NAMES = [
-    "Dr. Lamy Dupont (Cardiologie)", "Dr. Alice Dubois (Dermatologie)", 
-    "Prof. Marc Leroux (Généraliste)", "Dr. Sophie Moreau (Pédiatrie)", 
-    "Dr. Julien Petit (Ophtalmologie)", "Dr. Elena Rossi (Cardiologie)",
-];
+const DOCTOR_NAMES =JSON.parse(localStorage.getItem("medicareDoctors"));
+// console.log(DOCTOR_NAMES)
 
 const APPOINTMENTS_KEY = 'healthAppointments';
 const form = document.getElementById('appointment-form');
 const doctorSelect = document.getElementById('rdv-doctor');
+const dateSelect = document.getElementById('rdv-date');
 const appointmentsList = document.getElementById('appointments-list');
 const validationMessage = document.getElementById('validation-message');
 
@@ -60,14 +58,63 @@ window.editAppointment = (idToEdit) => {
     alert("Fonctionnalité de modification : Vous pouvez maintenant rouvrir le formulaire avec les données de l'ID " + idToEdit);
 };
 
+
+
+// function populateDoctorSelect() {
+//     DOCTOR_NAMES.forEach(name => {
+//         const option = document.createElement('option');
+//         option.value = name;
+//         option.textContent = name.name;
+//         // name.jours.forEach(jr =>{
+
+//         //     option.textContent = 3;
+//         // })
+//         doctorSelect.appendChild(option);
+        
+//     });
+// }
+// function populateDateSelect() {
+//     DOCTOR_NAMES.forEach(jours => {
+//         const option = document.createElement('option');
+//         option.value = jours;
+//         option.textContent =jours.jours;
+//         // name.jours.forEach(jr =>{
+
+//         //     option.textContent = 3;
+//         // })
+//         dateSelect.appendChild(option);
+//         console.log(jours)
+//     });
+// }
+
+
+
 function populateDoctorSelect() {
-    DOCTOR_NAMES.forEach(name => {
-        const option = document.createElement('option');
-        option.value = name;
-        option.textContent = name;
-        doctorSelect.appendChild(option);
-    });
+  doctorSelect.innerHTML = '';
+  DOCTOR_NAMES.forEach(doc => {
+    const option = document.createElement('option');
+    option.value = doc.name;
+    option.textContent = doc.name;
+    doctorSelect.appendChild(option);
+  });
 }
+
+function populateDateSelect() {
+  dateSelect.innerHTML = ''; 
+  const selectedDoctorName = doctorSelect.value;
+  const selectedDoctor = DOCTOR_NAMES.find(doc => doc.name === selectedDoctorName);
+
+  if (selectedDoctor) {
+    selectedDoctor.jours.forEach(jour => {
+      const option = document.createElement('option');
+      option.value = jour;
+      option.textContent = jour;
+      dateSelect.appendChild(option);
+    });
+  }
+}
+doctorSelect.addEventListener('change', populateDateSelect);
+
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -101,4 +148,5 @@ form.addEventListener('submit', (e) => {
 document.addEventListener('DOMContentLoaded', () => {
     populateDoctorSelect();
     renderAppointments();
+    populateDateSelect();
 });
