@@ -1,23 +1,20 @@
 let userform = document.querySelector("#userForm");
-let searchBar = document.getElementById("searchBar");
+let searchBar = document.getElementById("searchar");
 let list = document.querySelector("#table-body");
-let loadedData = JSON.parse(localStorage.getItem("healthAppointments"));
+let add = document.getElementById("add");
+// let loadedData = JSON.parse(localStorage.getItem("healthAppointments"));
 
-let mydata = [
-  {
-    id: "1762779814695",
-    name: "karbitou",
-    email: "mehdikarbitou@gmail.com",
-    date: "2003-02-22T02:20",
-    doctor: "Dr. Lamy Dupont (Cardiologie)",
-    status: true,
-  },
-];
+// let mydata = [
+//   {
+//     id: "1762779814695",
+//     name: "karbitou",
+//     email: "mehdikarbitou@gmail.com",
+//     date: "2003-02-22T02:20",
+//     doctor: "Dr. Lamy Dupont (Cardiologie)",
+//     status: true,
+//   },
+// ];
 let savedData = JSON.parse(localStorage.getItem("healthAppointments"));
-if (savedData) {
-  console.log("get data");
-}
-
 console.log("savedData", savedData);
 
 function allRdvData() {
@@ -90,7 +87,6 @@ function allRdvData() {
     let refuseIcon = document.createElement("i");
     refuseIcon.className = "fas fa-times";
 
-    
     acceptButton.addEventListener("click", () => {
       if (client.status !== "confirmed") {
         client.status = "confirmed";
@@ -128,9 +124,6 @@ function allRdvData() {
 
 calculate();
 allRdvData();
-f()
-
-
 
 function calculate() {
   let length = savedData.length;
@@ -138,12 +131,9 @@ function calculate() {
   add.innerHTML = statistics;
 }
 
-function f() {
-  const searchText = searchBar.value.toLowerCase();
+function filtere() {
+  const searchText = searchar.value.toLowerCase();
   savedData.filter((client) => {
-    let find = client.userDoctor.toLowerCase().includes(searchText);
-    return find
-
-    
+    let find = client.doctor.includes(searchText);
   });
-}console.log(find)
+}
