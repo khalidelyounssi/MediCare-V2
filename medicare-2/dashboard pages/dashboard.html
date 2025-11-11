@@ -58,37 +58,37 @@
                 </div>
                 <div id="deconnecter" class="flex items-center mt-4 border-2 w-full p-1.5 rounded-2xl ">
                     <i class="fas fa-sign-out-alt ml-4 "></i>
-                    <span  class="ml-3 text-sm font-medium">se déconnecter</span>
+                    <span class="ml-3 text-sm font-medium">se déconnecter</span>
                 </div>
             </div>
         </aside>
-        
 
-                <!-- Bottom Nav Mobile -->
-                <nav
-                    class="flex md:hidden fixed bottom-0 left-0 right-0  bg-blue-700 text-white justify-between gap- p-1.5 mb-[0.5rem] rounded-2xl h-[40px] mx-3 z-50">
-                    <a href="dashboard.html"
-                        class="flex items-center p-3 rounded-lg bg-blue-800 text-white font-semibold transition duration-200">
-                        <i class="fas fa-home mr-3"></i>
-                    </a>
-                    <a href="medecins.html"
-                        class="flex items-center p-3 rounded-lg text-blue-100 hover:bg-blue-600 transition duration-200">
-                        <i class="fas fa-user-md mr-3"></i>
-                    </a>
-                    <a href="disponibilites.html"
-                        class="flex items-center p-3 rounded-lg text-blue-100 hover:bg-blue-600 transition duration-200">
-                        <i class="fas fa-clock mr-3"></i>
 
-                    </a>
-                    <a href="rendezvous.html"
-                        class="flex items-center p-3 rounded-lg text-blue-100 hover:bg-blue-600 transition duration-200">
-                        <i class="fas fa-calendar-check mr-3"></i>
-                    </a>
-                    <a href="specialites.html"
-                        class="flex items-center p-3 rounded-lg text-blue-100 hover:bg-blue-600 transition duration-200">
-                        <i class="fas fa-tag mr-3"></i>
-                    </a>
-                </nav>
+        <!-- Bottom Nav Mobile -->
+        <nav
+            class="flex md:hidden fixed bottom-0 left-0 right-0  bg-blue-700 text-white justify-between gap- p-1.5 mb-[0.5rem] rounded-2xl h-[40px] mx-3 z-50">
+            <a href="dashboard.html"
+                class="flex items-center p-3 rounded-lg bg-blue-800 text-white font-semibold transition duration-200">
+                <i class="fas fa-home mr-3"></i>
+            </a>
+            <a href="medecins.html"
+                class="flex items-center p-3 rounded-lg text-blue-100 hover:bg-blue-600 transition duration-200">
+                <i class="fas fa-user-md mr-3"></i>
+            </a>
+            <a href="disponibilites.html"
+                class="flex items-center p-3 rounded-lg text-blue-100 hover:bg-blue-600 transition duration-200">
+                <i class="fas fa-clock mr-3"></i>
+
+            </a>
+            <a href="rendezvous.html"
+                class="flex items-center p-3 rounded-lg text-blue-100 hover:bg-blue-600 transition duration-200">
+                <i class="fas fa-calendar-check mr-3"></i>
+            </a>
+            <a href="specialites.html"
+                class="flex items-center p-3 rounded-lg text-blue-100 hover:bg-blue-600 transition duration-200">
+                <i class="fas fa-tag mr-3"></i>
+            </a>
+        </nav>
 
         <main class="flex-grow p-8">
             <header class="flex justify-between items-center pb-4 mb-6 border-b border-gray-300">
@@ -96,61 +96,62 @@
                 <div class="flex items-center space-x-4 ">
                     <img src="../../images/doc-2.png" alt="Admin Avatar"
                         class="w-9 h-9 rounded-full object-cover cursor-pointer">
-                    <i id="signOut" class="fas fa-sign-out-alt ml-4 border-2 p-3 rounded-[50%] text-gray-500 hover:text-blue-600 md:hidden"></i>
+                    <i id="signOut"
+                        class="fas fa-sign-out-alt ml-4 border-2 p-3 rounded-[50%] text-gray-500 hover:text-blue-600 md:hidden"></i>
                 </div>
             </header>
 
-<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+            <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
 
-    <!-- Total médecins -->
-    <div
-        class="bg-white p-6 rounded-xl shadow-lg flex items-center justify-between hover:shadow-xl transition duration-300">
-        <div>
-            <p class="text-3xl font-bold text-gray-800">250+</p>
-            <p class="text-gray-500 mt-1">Nombre total de médecins</p>
-        </div>
-        <div class="bg-blue-100 p-4 rounded-full">
-            <i class="fas fa-user-md text-3xl text-blue-600"></i>
-        </div>
-    </div>
+                <!-- Total médecins -->
+                <div
+                    class="bg-white p-6 rounded-xl shadow-lg flex items-center justify-between hover:shadow-xl transition duration-300">
+                    <div>
+                        <p id="medecins" class="text-3xl font-bold text-gray-800"></p>
+                        <p class="text-gray-500 mt-1">Nombre total de médecins</p>
+                    </div>
+                    <div class="bg-blue-100 p-4 rounded-full">
+                        <i class="fas fa-user-md text-3xl text-blue-600"></i>
+                    </div>
+                </div>
 
-    <!-- Médecins disponibles -->
-    <div
-        class="bg-white p-6 rounded-xl shadow-lg flex items-center justify-between hover:shadow-xl transition duration-300">
-        <div>
-            <p class="text-3xl font-bold text-gray-800">180+</p>
-            <p class="text-gray-500 mt-1">Médecins disponibles</p>
-        </div>
-        <div class="bg-green-100 p-4 rounded-full">
-            <i class="fas fa-user-check text-3xl text-green-600"></i>
-        </div>
-    </div>
+                <!-- Médecins disponibles -->
+                <div
+                    class="bg-white p-6 rounded-xl shadow-lg flex items-center justify-between hover:shadow-xl transition duration-300">
+                    <div>
+                        <p id="disponibilites" class="text-3xl font-bold text-gray-800"></p>
+                        <p class="text-gray-500 mt-1">Médecins disponibles</p>
+                    </div>
+                    <div class="bg-green-100 p-4 rounded-full">
+                        <i class="fas fa-user-check text-3xl text-green-600"></i>
+                    </div>
+                </div>
 
-    <!-- Total rendez-vous -->
-    <div
-        class="bg-white p-6 rounded-xl shadow-lg flex items-center justify-between hover:shadow-xl transition duration-300">
-        <div>
-            <p class="text-3xl font-bold text-gray-800">1.2K</p>
-            <p class="text-gray-500 mt-1">Nombre total de rendez-vous</p>
-        </div>
-        <div class="bg-yellow-100 p-4 rounded-full">
-            <i class="fas fa-calendar-alt text-3xl text-yellow-600"></i>
-        </div>
-    </div>
+                <!-- Total rendez-vous -->
+                <div
+                    class="bg-white p-6 rounded-xl shadow-lg flex items-center justify-between hover:shadow-xl transition duration-300">
+                    <div>
+                        <p id="rendez-vous" class="text-3xl font-bold text-gray-800"></p>
+                        <p class="text-gray-500 mt-1">Nombre total de rendez-vous</p>
+                    </div>
+                    <div class="bg-yellow-100 p-4 rounded-full">
+                        <i class="fas fa-calendar-alt text-3xl text-yellow-600"></i>
+                    </div>
+                </div>
 
-    <!-- Nombre de spécialités -->
-    <div
-        class="bg-white p-6 rounded-xl shadow-lg flex items-center justify-between hover:shadow-xl transition duration-300">
-        <div>
-            <p class="text-3xl font-bold text-gray-800">12</p>
-            <p class="text-gray-500 mt-1">Nombre de spécialités</p>
-        </div>
-        <div class="bg-purple-100 p-4 rounded-full">
-            <i class="fas fa-stethoscope text-3xl text-purple-600"></i>
-        </div>
-    </div>
+                <!-- Nombre de spécialités -->
+                <div
+                    class="bg-white p-6 rounded-xl shadow-lg flex items-center justify-between hover:shadow-xl transition duration-300">
+                    <div>
+                        <p id="specialites" class="text-3xl font-bold text-gray-800"></p>
+                        <p class="text-gray-500 mt-1">Nombre de spécialités</p>
+                    </div>
+                    <div class="bg-purple-100 p-4 rounded-full">
+                        <i class="fas fa-stethoscope text-3xl text-purple-600"></i>
+                    </div>
+                </div>
 
-</section>
+            </section>
 
 
             <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -158,20 +159,20 @@
                     <h2 class="text-xl font-semibold text-gray-800 mb-4">Activité Récente</h2>
                     <ul class="space-y-3 text-[13px] md:text-[16px]">
                         <li class="flex items-center text-gray-600 border-b border-gray-100 pb-2">
-                            <span class="w-2 h-2 rounded-full bg-blue-500 mr-3 flex-shrink-0 "></span> <span
-                                >Nouveau rendez-vous pour Dr Dupont avec Mme. Mire. Leery</span>
+                            <span class="w-2 h-2 rounded-full bg-blue-500 mr-3 flex-shrink-0 "></span> <span>Nouveau
+                                rendez-vous pour Dr Dupont avec Mme. Mire. Leery</span>
                         </li>
                         <li class="flex items-center text-gray-600 border-b border-gray-100 pb-2">
-                            <span class="w-2 h-2 rounded-full bg-green-500 mr-3 flex-shrink-0"></span> <span
-                                >Dr. Benali a mis à jour ses disponibilités</span>
+                            <span class="w-2 h-2 rounded-full bg-green-500 mr-3 flex-shrink-0"></span> <span>Dr. Benali
+                                a mis à jour ses disponibilités</span>
                         </li>
                         <li class="flex items-center text-gray-600 border-b border-gray-100 pb-2">
-                            <span class="w-2 h-2 rounded-full bg-red-500 mr-3 flex-shrink-0"></span> <p
-                                >Annulation: Rendez-vous de M. Dubois (Cardiologie)</span>
+                            <span class="w-2 h-2 rounded-full bg-red-500 mr-3 flex-shrink-0"></span>
+                            <p>Annulation: Rendez-vous de M. Dubois (Cardiologie)</span>
                         </li>
                         <li class="flex items-center text-gray-600">
-                            <span class="w-2 h-2 rounded-full bg-yellow-500 mr-3 flex-shrink-0"></span> <span
-                                >Nouvel ajout de spécialité : Neurologie</span>
+                            <span class="w-2 h-2 rounded-full bg-yellow-500 mr-3 flex-shrink-0"></span> <span>Nouvel
+                                ajout de spécialité : Neurologie</span>
                         </li>
                     </ul>
                 </div>
