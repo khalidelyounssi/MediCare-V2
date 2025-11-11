@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MediCare Admin - Rendez-vous</title>
+
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+    <body class="bg-gray-100 font-sans antialiased">
+        <div class="flex min-h-screen">
+            <aside
+                class="w-64 bg-blue-700 text-white p-6 shadow-xl flex flex-col justify-between">
+                <div>
+                    <div
+                        class="text-2xl font-bold flex items-center justify-center gap-2 mb-8 border-b border-blue-600 pb-4">
+                        <i class="fas fa-medkit text-3xl text-white"></i>
+                        <span>MediCare Admin</span>
+                    </div>
+                    <nav class="space-y-2">
+                        <a href="dashboard.html"
+                            class="flex items-center p-3 rounded-lg text-blue-100 hover:bg-blue-600 transition duration-200">
+                            <i class="fas fa-home mr-3"></i>
+                            Accueil
+                        </a>
+                        <a href="medecins.html"
+                            class="flex items-center p-3 rounded-lg text-blue-100 hover:bg-blue-600 transition duration-200">
+                            <i class="fas fa-user-md mr-3"></i>
+                            Médecins
+                        </a>
+                        <a href="disponibilites.html"
+                            class="flex items-center p-3 rounded-lg text-blue-100 hover:bg-blue-600 transition duration-200">
+                            <i class="fas fa-clock mr-3"></i>
+                            Disponibilité
+                        </a>
+                        <a href="rendezvous.html"
+                            class="flex items-center p-3 rounded-lg bg-blue-800 text-white font-semibold transition duration-200">
+                            <i class="fas fa-calendar-check mr-3"></i>
+                            Rendez-vous
+                        </a>
+                        <a href="specialites.html"
+                            class="flex items-center p-3 rounded-lg text-blue-100 hover:bg-blue-600 transition duration-200">
+                            <i class="fas fa-tag mr-3"></i>
+                            Spécialité
+                        </a>
+                    </nav>
+                </div>
+
+            </aside>
+
+            <main class="flex-grow p-8">
+                <header
+                    class="flex justify-between items-center pb-4 mb-6 border-b border-gray-300">
+                    <h1 class="text-3xl font-semibold text-gray-800">Gestion des
+                        Rendez-vous</h1>
+
+                </header>
+
+                <section class="bg-white p-6 rounded-xl shadow-lg mb-8">
+                    <div
+                        class="flex justify-between items-center mb-6 flex-wrap gap-4">
+                        <h2 class="text-2xl font-semibold text-gray-800">Liste
+                            des Rendez-vous</h2>
+                        <a
+                            href="/MediCare-V2/pages/rendez-vous.html"
+                            class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition duration-200 flex items-center">
+                            <i class="fas fa-plus mr-2"></i> Planifier un
+                            Rendez-vous
+                        </a>
+                    </div>
+
+                    <div class="mb-6 flex flex-wrap gap-4 items-center">
+                        <input id="searchar" type="text"
+                            placeholder="Rechercher par patient/médecin..."
+                            class="p-2 border border-gray-300 rounded-md flex-grow md:flex-grow-0 md:w-64">
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table id="userForm" class="min-w-full bg-white">
+                            <thead>
+                                <tr
+                                    class="bg-gray-100 text-left text-gray-600 uppercase text-sm leading-normal">
+                                    <th class="py-3 px-6">Id</th>
+                                    <th class="py-3 px-6">Patient</th>
+                                    <th class="py-3 px-6">Email</th>
+                                    <th class="py-3 px-6">Médecin</th>
+                                    <th class="py-3 px-6">Date</th>
+                                    <th class="py-3 px-6">Status</th>
+
+                                    <th
+                                        class="py-3 px-6 text-center">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-body">
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="add"
+                        class="flex justify-center items-center mt-6"></div>
+                </section>
+            </main>
+        </div>
+
+        <script src="/MediCare-V2/medicare-2/js/rendezvous.js"></script>
+    </body>
+</html>
