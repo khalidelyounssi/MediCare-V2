@@ -34,7 +34,6 @@ window.toggleFavorite = (doctorId) => {
 function renderDoctorCard(doctor) {
     const isFavorite = getFavorites().includes(doctor.id);
     
-    // ✅ تحقق من الأيام: إذا عندو أيام = Disponible، إلا لا = Indisponible
     const hasWorkDays = doctor.jours && doctor.jours.length > 0;
     const isAvailable = hasWorkDays;
     
@@ -48,7 +47,6 @@ function renderDoctorCard(doctor) {
         ? 'text-yellow-400 hover:text-gray-400' 
         : 'text-gray-300 dark:text-gray-500 hover:text-yellow-400';
     
-    // استخدام doctor.img (مع fallback)
     const imagePath = doctor.img || doctor.image || "../assets/doc-1.png"; 
     
     return `
@@ -108,7 +106,6 @@ window.filterDoctors = () => {
     
     if (selectedAvailability) {
         const isAvailable = selectedAvailability === 'available';
-        // ✅ التحقق من الأيام بدل status
         filteredDoctors = filteredDoctors.filter(d => {
             const hasWorkDays = d.jours && d.jours.length > 0;
             return isAvailable ? hasWorkDays : !hasWorkDays;
