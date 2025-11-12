@@ -76,10 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </td>
                 <td class="py-3 px-6">${doctor.specialty}</td>
                 <td class="py-3 px-6">${doctor.contact}</td>
-                <td class="py-3 px-6">
-                    <span class="${statusClass} py-1 px-3 rounded-full text-xs">${doctor.status}</span>
-                </td>
-                <td class="py-3 px-6">${doctor.rdv}</td>
+               
                 <td class="py-3 px-6 text-center">
                     <div class="flex item-center justify-center space-x-2">
                         <button class="w-7 h-7 bg-blue-100 hover:bg-blue-200 rounded-full flex items-center justify-center text-blue-600 edit-btn" 
@@ -113,10 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <input type="email" name="contact" value="${doctor.contact || ''}" placeholder="Contact (email)"
                         class="w-full border-gray-300 rounded-md shadow-sm p-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                 </td>
-                <td class="py-2 px-6">
-                    <span class="py-1 px-3 rounded-full text-xs bg-yellow-200 text-yellow-800">${doctor.status || (isNew ? 'Nouveau' : 'Actif')}</span>
-                </td>
-                <td class="py-2 px-6">${doctor.rdv || 0}</td>
+                
                 <td class="py-3 px-6 text-center">
                     <div class="flex item-center justify-center space-x-2">
                         <button class="w-7 h-7 bg-green-100 hover:bg-green-200 rounded-full flex items-center justify-center text-green-600 save-btn" 
