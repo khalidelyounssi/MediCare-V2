@@ -1,18 +1,16 @@
 let userform = document.querySelector("#userForm");
-let searchBar = document.getElementById("searchar");
+let searchBar = document.getElementById("searchBar");
 let list = document.querySelector("#table-body");
-let add = document.getElementById("add"); 
+let add = document.getElementById("add");
 
- let savedData = JSON.parse(localStorage.getItem("healthAppointments")) || [];
+let savedData = JSON.parse(localStorage.getItem("healthAppointments")) || [];
 
 console.log("savedData", savedData);
 
-function allRdvData() {
+function allRdvData(dataToShow) {
   list.innerHTML = "";
-   savedData = JSON.parse(localStorage.getItem("healthAppointments")) || [];
-//    console.log(savedData)
 
-  savedData.forEach((client) => {
+  dataToShow.forEach((client) => {
     list.className = "text-gray-700 text-sm font-light";
     let info = document.createElement("tr");
     info.className = "border-b border-gray-200 hover:bg-gray-50";
@@ -115,19 +113,22 @@ function allRdvData() {
   });
 }
 
-
-
 function calculate() {
   let length = savedData.length;
   const statistics = "there is " + length + " " + "rondez-vous";
   add.innerHTML = statistics;
 }
 
-function filtere() {
-  const searchText = searchar.value.toLowerCase();
-  savedData.filter((client) => {
-    let find = client.doctor.includes(searchText);
+function filtrage() {
+  const searchText = searchBar.value.toLowerCase();
+
+  let take = savedData.filter((client) => {
+    const findDoctor = client.doctor.toLowerCase().includes(searchText);
+    return findDoctor;
   });
+
+  allRdvData(take);
 }
+searchBar.addEventListener("input", filtrage);
 calculate();
-allRdvData();
+allRdvData(savedData);
