@@ -72,8 +72,20 @@ if (localStorage.getItem('specialite')) {
 renderList();
 
 function supprimSp(i) {
-    specialite.splice(i, 1);
-    localStorage.setItem('specialite', JSON.stringify(specialite));
+    let specialiteASupprimer = specialite[i];
+    let doctar = JSON.parse(localStorage.getItem('medicareDoctors')) || [];
+    
+    let specialiteUtilisee = doctar.some(docteur => 
+        docteur.specialty === specialiteASupprimer.nom
+    );
+    
+    if (specialiteUtilisee) {
+        alert('you can not delete this specialty: it is used by a doctor');
+    } else {
+        specialite.splice(i, 1);
+        localStorage.setItem('specialite', JSON.stringify(specialite));
+    }
+    
     renderList();
 }
 
