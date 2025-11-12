@@ -38,7 +38,6 @@ function renderAppointments() {
     });
 
     const newStatus = app.status || "Pending";
-    console.log(newStatus);
 
     const appElement = document.createElement("div");
     appElement.className =
@@ -48,7 +47,18 @@ function renderAppointments() {
                 <p class="text-lg font-bold text-gray-900 dark:text-white">${date}</p>
                 <p class="text-gray-600 dark:text-gray-300">Avec: <span class="font-semibold">${app.doctor}</span></p>
                 <p class="text-sm text-gray-500 dark:text-gray-400">${app.name} (${app.email})</p>
-                <p class="text-sm text-gray-500 dark:text-gray-400">${newStatus}</p>
+                <p class="text-sm  dark:text-gray-400">${newStatus
+                 === 'confirmed' ?
+                                `<span
+                                
+                                    class="text-sm text-green-700 font-medium">Confirmed</span> ` :
+                (newStatus === 'Pending' ?                
+                
+                                `<span class="text-sm text-gray-700 font-medium">Pending</span>`:
+                                `
+                                <span
+                                    class="text-sm text-red-700 font-medium">Canceled</span> `)
+                 }</p>
             </div>
             <div class="space-x-2">
                 <button onclick="editAppointment('${app.id}')" class="text-blue-500 hover:text-blue-700 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">✏️</button>
