@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const renderDoctorRow = (doctor) => {
         const statusClass = doctor.status === "Actif" ? 'bg-green-200 text-green-800' : 'bg-gray-200 text-gray-800';
         return `
-            <tr class="border-b border-gray-200 hover:bg-gray-50" data-doctor-id="${doctor.id}">
+            <tr class="border-b border-gray-200 hover:bg-gray-50 font-normal" data-doctor-id="${doctor.id}">
                 <td class="py-3 px-6 flex items-center">
                     <img src="${doctor.img}" alt="${doctor.name}" class="w-8 h-8 rounded-full mr-3 object-cover">
                     ${doctor.name}

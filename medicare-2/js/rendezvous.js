@@ -13,7 +13,7 @@ function allRdvData(dataToShow) {
   dataToShow.forEach((client) => {
     list.className = "text-gray-700 text-sm font-light";
     let info = document.createElement("tr");
-    info.className = "border-b border-gray-200 hover:bg-gray-50";
+    info.className = "border-b border-gray-200 hover:bg-gray-50 font-normal";
 
     let id = document.createElement("td");
     id.className = " py-3 px-6";
@@ -57,7 +57,7 @@ function allRdvData(dataToShow) {
     }
 
     let choose = document.createElement("td");
-    choose.className = "py-3 px-6 text-center";
+    choose.className = "py-3  px-6 text-center";
 
     let buttons = document.createElement("div");
     buttons.className = "flex item-center justify-center space-x-2";
