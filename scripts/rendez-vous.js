@@ -37,6 +37,9 @@ function renderAppointments() {
       minute: "2-digit",
     });
 
+    const newStatus = app.status || "Pending";
+    console.log(newStatus);
+
     const appElement = document.createElement("div");
     appElement.className =
       "appointment-card bg-white dark:bg-gray-700 p-5 rounded-xl shadow-lg flex justify-between items-center transition-shadow duration-300 hover:shadow-xl border-l-4 border-secondary dark:border-primary";
@@ -45,7 +48,7 @@ function renderAppointments() {
                 <p class="text-lg font-bold text-gray-900 dark:text-white">${date}</p>
                 <p class="text-gray-600 dark:text-gray-300">Avec: <span class="font-semibold">${app.doctor}</span></p>
                 <p class="text-sm text-gray-500 dark:text-gray-400">${app.name} (${app.email})</p>
-                <p class="text-sm text-gray-500 dark:text-gray-400">${app.status}</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">${newStatus}</p>
             </div>
             <div class="space-x-2">
                 <button onclick="editAppointment('${app.id}')" class="text-blue-500 hover:text-blue-700 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">✏️</button>
