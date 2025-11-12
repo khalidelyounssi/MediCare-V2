@@ -158,21 +158,15 @@
                 <div class="bg-white p-6 rounded-xl shadow-lg">
                     <h2 class="text-xl font-semibold text-gray-800 mb-4">Activité Récente</h2>
                     <ul class="space-y-3 text-[13px] md:text-[16px]">
-                        <li class="flex items-center text-gray-600 border-b border-gray-100 pb-2">
-                            <span class="w-2 h-2 rounded-full bg-blue-500 mr-3 flex-shrink-0 "></span> <span>Nouveau
-                                rendez-vous pour Dr Dupont avec Mme. Mire. Leery</span>
+                        <li id="newRondezVous" class="flex items-center text-gray-600 border-b border-gray-100 pb-2">
+                            <span class="w-2 h-2 rounded-full bg-blue-500 mr-3 flex-shrink-0 "></span>
                         </li>
-                        <li class="flex items-center text-gray-600 border-b border-gray-100 pb-2">
-                            <span class="w-2 h-2 rounded-full bg-green-500 mr-3 flex-shrink-0"></span> <span>Dr. Benali
-                                a mis à jour ses disponibilités</span>
-                        </li>
-                        <li class="flex items-center text-gray-600 border-b border-gray-100 pb-2">
+                       
+                        <li id="newAnnulation" class="flex items-center text-gray-600 border-b border-gray-100 pb-2">
                             <span class="w-2 h-2 rounded-full bg-red-500 mr-3 flex-shrink-0"></span>
-                            <p>Annulation: Rendez-vous de M. Dubois (Cardiologie)</span>
                         </li>
-                        <li class="flex items-center text-gray-600">
-                            <span class="w-2 h-2 rounded-full bg-yellow-500 mr-3 flex-shrink-0"></span> <span>Nouvel
-                                ajout de spécialité : Neurologie</span>
+                        <li id="newSpecialite" class="flex items-center text-gray-600">
+                            <span class="w-2 h-2 rounded-full bg-yellow-500 mr-3 flex-shrink-0"></span> 
                         </li>
                     </ul>
                 </div>
@@ -182,30 +176,23 @@
                     <div class="flex items-center w-full justify-center mb-[2rem]">
                         <div id="statusChart"
                             class="chart-container w-[100px] h-[100px] sm:w-48 sm:h-48 flex items-center justify-center relative flex-shrink-0">
-                            <div class="w-full h-full rounded-full" style="
-                                background: conic-gradient(
-                                    #3b82f6 0% 60%, /* Confirmed */
-                                    #f59e0b 60% 85%, /* Pending */
-                                    #ef4444 85% 100%  /* Canceled */
-                                );
-                                mask: radial-gradient(transparent 65%, black 70%);
-                                -webkit-mask: radial-gradient(transparent 65%, black 70%);
-                            "></div>
+                            <div id="circle" 
+                            class="w-full h-full rounded-full" ></div>
                             <p class="absolute text-2xl font-bold text-gray-800">100%</p>
                         </div>
 
                         <div class="ml-8 space-y-3 text-sm flex-grow">
-                            <div class="flex items-center">
-                                <span class="w-3 h-3 rounded-full bg-blue-600 mr-2 "></span> Confirmé (<span
-                                    class="font-bold">60%</span>)
+                            <div  class="flex items-center">
+                                <span  class="w-3 h-3 rounded-full bg-blue-600 mr-2 "></span> Confirmé (<span id="confirmedPct"
+                                    class="font-bold"></span>)
                             </div>
                             <div class="flex items-center">
-                                <span class="w-3 h-3 rounded-full bg-yellow-500 mr-2"></span> En attente (<span
-                                    class="font-bold">25%</span>)
+                                <span class="w-3 h-3 rounded-full bg-yellow-500 mr-2"></span> En attente (<span id="pendingPct"
+                                    class="font-bold"></span>)
                             </div>
                             <div class="flex items-center">
-                                <span class="w-3 h-3 rounded-full bg-red-500 mr-2"></span> Annulé (<span
-                                    class="font-bold">15%</span>)
+                                <span class="w-3 h-3 rounded-full bg-red-500 mr-2"></span> Annulé (<span id="canceledPct"
+                                    class="font-bold"></span>)
                             </div>
                         </div>
                     </div>
