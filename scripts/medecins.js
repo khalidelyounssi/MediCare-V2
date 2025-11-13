@@ -1,12 +1,5 @@
-const DOCTORS = [
-    { id: 1, name: "Dr. Lamy Dupont", specialty: "Cardiologie", available: true, image: "../images/doc-1.png" },
-    { id: 2, name: "Dr. Alice Dubois", specialty: "Dermatologie", available: false, image: "../images/doc-2.png" },
-    { id: 3, name: "Prof. Marc Leroux", specialty: "Généraliste", available: true, image: "../images/doc-3.png" },
-    { id: 4, name: "Dr. Sophie Moreau", specialty: "Pédiatrie", available: true, image: "../images/doc-4.png" },
-    { id: 5, name: "Dr. Julien Petit", specialty: "Ophtalmologie", available: true, image: "../images/doc-5.png" },
-    { id: 6, name: "Dr. Elena Rossi", specialty: "Cardiologie", available: true, image: "../images/doc-6.png" },
-    { id: 7, name: "Dr. Ben Ali", specialty: "Pédiatrie", available: false, image: "../images/doc-7.png" },
-];
+const DOCTORS = JSON.parse(localStorage.getItem("medicareDoctors")) || [];
+console.log('Doctors loaded:', DOCTORS);
 
 const FAVORITES_KEY = 'doctorFavorites';
 const doctorsListContainer = document.getElementById('doctors-list');
@@ -41,21 +34,26 @@ window.toggleFavorite = (doctorId) => {
 function renderDoctorCard(doctor) {
     const isFavorite = getFavorites().includes(doctor.id);
     
-    const availabilityClass = doctor.available 
+    const hasWorkDays = doctor.jours && doctor.jours.length > 0;
+    const isAvailable = hasWorkDays;
+    
+    const availabilityClass = isAvailable 
         ? 'bg-green-500 text-white shadow-md' 
         : 'bg-red-500 text-white shadow-md';
     
-    const availabilityText = doctor.available ? 'Disponible' : 'Indisponible';
+    const availabilityText = isAvailable ? 'Disponible' : 'Indisponible';
 
     const favoriteIconClass = isFavorite 
         ? 'text-yellow-400 hover:text-gray-400' 
         : 'text-gray-300 dark:text-gray-500 hover:text-yellow-400';
-       
-    const imagePath = doctor.image || "../images/placeholder.jpg"; 
+    
+    const imagePath = doctor.img || doctor.image || "../assets/doc-1.png"; 
     
     return `
         <div class="doctor-card bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-xl flex flex-col items-center text-center transform hover:scale-[1.02] transition-transform duration-300 border-t-4 border-secondary dark:border-primary">
-            <img src="${imagePath}" alt="${doctor.name}" class="w-32 h-32 rounded-full object-cover mb-4 border-4 border-gray-200 dark:border-gray-700 shadow-md">
+            <img src="${imagePath}" alt="${doctor.name}" 
+                 class="w-32 h-32 rounded-full object-cover mb-4 border-4 border-gray-200 dark:border-gray-700 shadow-md"
+                 onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(doctor.name)}&background=3B82F6&color=fff&size=128'">
             <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-1">${doctor.name}</h4>
             <p class="text-secondary dark:text-primary font-medium mb-3">${doctor.specialty}</p>
             
@@ -68,6 +66,11 @@ function renderDoctorCard(doctor) {
                         <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                     </svg>
                 </button>
+            </div>
+            
+            <div class="mt-4 text-sm text-gray-600 dark:text-gray-400">
+                
+                ${hasWorkDays ? `<p class="text-green-600 font-semibold mt-2">🗓️ ${doctor.jours.length} jour(s) de travail</p>` : '<p class="text-red-600 font-semibold mt-2">❌ Aucun jour défini</p>'}
             </div>
         </div>
     `;
@@ -97,14 +100,16 @@ window.filterDoctors = () => {
         favoritesTitle.classList.add('hidden');
     }
     
-
     if (selectedSpecialty) {
         filteredDoctors = filteredDoctors.filter(d => d.specialty === selectedSpecialty);
     }
     
     if (selectedAvailability) {
         const isAvailable = selectedAvailability === 'available';
-        filteredDoctors = filteredDoctors.filter(d => d.available === isAvailable);
+        filteredDoctors = filteredDoctors.filter(d => {
+            const hasWorkDays = d.jours && d.jours.length > 0;
+            return isAvailable ? hasWorkDays : !hasWorkDays;
+        });
     }
 
     if (searchTerm) {
@@ -118,6 +123,10 @@ window.filterDoctors = () => {
 };
 
 function initDoctorsPage() {
+    if (DOCTORS.length === 0) {
+        doctorsListContainer.innerHTML = '<p class="col-span-full text-center text-xl text-gray-500 py-10">⚠️ Aucun médecin trouvé. Veuillez ajouter des médecins d\'abord.</p>';
+        return;
+    }
 
     const specialties = [...new Set(DOCTORS.map(d => d.specialty))].sort();
     specialties.forEach(specialty => {
@@ -127,7 +136,6 @@ function initDoctorsPage() {
         specialtyFilter.appendChild(option);
     });
     
-   
     showFavoritesBtn.addEventListener('click', () => {
         const isCurrentlyFavoriteMode = showFavoritesBtn.classList.contains('bg-secondary');
         
